@@ -10,6 +10,7 @@ on:
     branches:
       - master
       - main
+      - rymart-branch
 
 jobs:
   lint:
