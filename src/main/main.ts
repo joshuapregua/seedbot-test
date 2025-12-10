@@ -1,5 +1,6 @@
 import {app, BrowserWindow, ipcMain, session} from 'electron';
 import {join} from 'path';
+import { getAppInfo } from './services/systemInfoService';
 
 function createWindow () {
   const mainWindow = new BrowserWindow({
@@ -49,3 +50,8 @@ app.on('window-all-closed', function () {
 ipcMain.on('message', (event, message) => {
   console.log(message);
 })
+
+// Handle renderer requests for application info via IPC
+ipcMain.handle('get-app-info', async () => {
+  return getAppInfo();
+});
