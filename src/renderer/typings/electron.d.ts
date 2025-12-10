@@ -1,8 +1,9 @@
 /**
  * Should match main/preload.ts for typescript support in renderer
  */
-export default interface ElectronApi {
-  sendMessage: (message: string) => void
+interface ElectronApi {
+  sendMessage: (message: string) => void,
+  getAppInfo: () => Promise<{ name: string; version: string; platform: string; electron: string; chrome: string; }>
 }
 
 declare global {
@@ -10,3 +11,5 @@ declare global {
     electronAPI: ElectronApi,
   }
 }
+
+export {};
